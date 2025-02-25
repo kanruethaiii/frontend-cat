@@ -1,0 +1,65 @@
+main {
+    text-align: center;
+}
+body {
+    margin: 0px;
+    background-color: #CfE0EB;
+}
+.navbar ul{
+    list-style-type:none;
+    background-color:#78A3D4;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+}
+.navbar a:hover { /*เปลี่ยนสีตอนเอาเม้าชี้*/
+    background-color: rgb(255, 255, 255);
+    color: #78A3D4;
+}
+.navbar li {
+    float: left;
+}
+h1 {
+    margin: 30px;
+    text-align: center;
+}
+th {
+    background-color: #78A3D4;
+}
+td{
+    background-color: white;
+}
+table , th ,td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+button {
+    padding: 10px;
+    margin: 30px;
+    border: none;
+    background-color: #CfE0EB;
+    border-radius: 8px;
+    border: 2px solid rgb(0, 0, 0);
+}
+button:hover {
+    background-color:rgb(0, 0, 0);
+    color: white;
+}
+div.col-6 {
+    border: 2px solid rgb(255, 255, 255);
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 3px;
+}
+div.form-group{
+    margin-top: 10px;
+    margin: 10px;
+}
