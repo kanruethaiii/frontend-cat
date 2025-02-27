@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Shop</title>
+    <link rel="stylesheet"  href="../css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Cat All</a></li>
+            <li><a href="/">Customer</a></li>
+            <li><a href="/">Order Cat</a></li>
+            <li><a href="/">Breed</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Cat List</h1>
+        <center>
+        <table class="list" style="width: 50%;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Breed</th>
+                    <th>Availability</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cats.forEach(cat => { %>
+                    <tr>
+                        <td><%= cat.id %></td>
+                        <td><%= cat.name %></td>
+                        <td><%= cat.breed %></td>
+                        <td><%= cat.availability ? "Available" : "Not Available" %></td>
+                        <td>
+                            <a href="/cat/<%= cat.id %>">View</a>
+                            <a href="/update/<%= cat.id %>">Edit</a>
+                            <a href="/delete/<%= cat.id %>">Delete</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <a href="/create" class="CreateNewCat" ">Create New Cat</a>
+    </center>
+    </main>
+</body>
+</html>

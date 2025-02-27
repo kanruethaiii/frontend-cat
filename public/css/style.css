@@ -3,7 +3,7 @@ main {
 }
 body {
     margin: 0px;
-    background-color: #CfE0EB;
+    background-image:linear-gradient(to right,#ffb3ba,#bae1ff,#DAFAFA);
 }
 .navbar ul{
     list-style-type:none;
@@ -30,15 +30,23 @@ h1 {
     margin: 30px;
     text-align: center;
 }
-th {
-    background-color: #78A3D4;
+th{
+    background-color: #fdd1dc;
 }
-td{
+td,tr{
     background-color: white;
-}
-table , th ,td {
-    border: 1px solid black;
     text-align: center;
+    padding: 5px;
+    
+}
+table {
+    border-collapse: collapse;
+    border-radius: 5px 5px 0 0;
+    font-size: 1 em;
+
+    min-width: 400px;
+    margin: 25px 0;
+    overflow:hidden;
 }
 
 button {
@@ -63,3 +71,4 @@ div.form-group{
     margin-top: 10px;
     margin: 10px;
 }
+

@@ -32,7 +32,7 @@ app.get("/cat/:id", async (req, res) => {
 });
 
 app.get("/create", (req, res) => {
-    res.render("create");
+    res.render('addcat');
 });
 
 app.post("/create", async (req, res) => {
@@ -48,8 +48,9 @@ app.post("/create", async (req, res) => {
 
 app.get("/update/:id", async (req, res) => {
     try {
-        const response = await axios.get(base_url + '/cats/' + req.params.id);
-        res.render("update", { cat: response.data });
+        const cats = await axios.get(base_url + '/cats/edit/' + req.params.id);
+        const cat = cats.data;
+        res.render("editcat", { cat });
     } catch (err) {
         console.log(err);
         res.status(500).send('Error');
