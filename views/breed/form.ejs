@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1><%= breed.id ? "Edit Breed" : "Add Breed" %></h1>
+    <center>
+    <form action="<%= breed.id ? `/breed/${breed.id}/edit` : '/breed/create' %>" method="POST">
+
+        <div class="form-group">
+            <label for="name"><strong>Breed Name:</strong></label>
+            <input type="text" id="name" name="name" required size="40" value="<%= breed.name || '' %>">
+        </div>
+
+        <div class="form-group">
+            <label for="is_active"><strong>Active:</strong></label>
+            <select id="is_active" name="is_active">
+                <option value="true" <%= breed.is_active === true ? "selected" : "" %>>Active</option>
+                <option value="false" <%= breed.is_active === false ? "selected" : "" %>>Inactive</option>
+            </select>
+        </div>
+
+        <button type="submit" class="CreateNewCat">Save</button>
+    </form>
+        <a href="/breed" button class="CreateNewCat">Back to List</a>
+    </center>
+</body>
+</html>

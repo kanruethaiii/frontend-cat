@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1><%= order.id ? "Edit Order" : "Add Order" %></h1>
+    <center>
+    <form action="<%= order.id ? `/order/${order.id}/edit` : '/order/create' %>" method="POST">
+
+        <div class="form-group">
+            <label for="cat"><strong>Cat Name:</strong></label>
+            <select id="cat" name="cat">
+                <% cats.forEach(cat => { %>
+                    <option value="<%= cat.id %>" <%//= order.cat_id === cat.id ? "selected" : "" %> >
+                        <%= cat.name %>
+                    </option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="customer"><strong>Customer Name:</strong></label>
+            <select id="customer" name="customer">
+                <% customers.forEach(customer => { %>       
+                    <option value="<%= customer.id %>" <%//= order.customer_id === customer.id ? "selected" : "" %> >
+                        <%= customer.username %>
+                    </option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity"><strong>Quantity:</strong></label>
+            <input type="number" id="quantity" name="quantity" min="0" value="<%= order.quantity || '' %>">
+        </div>
+
+        <div class="form-group">
+            <label for="unitPrice"><strong>Unit Price:</strong></label>
+            <input type="number" id="unitPrice" name="unitPrice" min="0" value="<%= order.unitPrice || '' %>">
+        </div>
+
+        <button type="submit" class="CreateNewCat">Save</button>
+    </form>
+        <a href="/order" button class="CreateNewCat">Back to List</a>
+    </center>
+</body>
+</html>

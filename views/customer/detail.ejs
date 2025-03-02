@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<center>
+<body>
+  <h1><%= customer.username %></h1>
+  <p><strong>Name:</strong> <%= customer.firstName + " " + customer.lastName %></p>
+  <p><strong>Email:</strong> <%= customer.email %></p>
+  <p><strong>Phone:</strong> <%= customer.phoneNumber %></p>
+
+  <a href="/customer/<%= customer.id %>/edit">Edit</a>
+  <a href="/customer/<%= customer.id %>/delete" onclick="return confirm('Are you sure you want to delete this cat?')">Delete</a>
+  
+  <br><br>
+  <!-- Corrected Back to List link -->
+  <a href="/customer" class="CreateNewCat">Back to List</a>
+</body>
+</center>
+</html>

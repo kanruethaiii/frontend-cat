@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<center>
+<body>
+  <h1><%= breed.name %></h1>
+  <p><strong>Breed:</strong> <%= breed.name %></p>
+  <p><strong>Active:</strong> <%= breed.is_active ? "Active" : "Inactive" %></p>
+
+  <a href="/breed/<%= breed.id %>/edit">Edit</a>
+  <a href="/breed/<%= breed.id %>/delete" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
+  
+  <br><br>
+  <!-- Corrected Back to List link -->
+  <a href="/breed" class="CreateNewCat">Back to List</a>
+</body>
+</center>
+</html>

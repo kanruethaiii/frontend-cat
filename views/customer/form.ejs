@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1><%= customer.id ? "Edit Customer" : "Add Customer" %></h1>
+    <center>
+    <form action="<%= customer.id ? `/customer/${customer.id}/edit` : '/customer/create' %>" method="POST">
+        <div class="form-group">
+            <label for="username"><strong>Username:</strong></label>
+            <input type="text" id="username" name="username" required size="40" value="<%= customer.username %>">
+        </div>
+
+        <div class="form-group">
+            <label for="firstName"><strong>Firstname:</strong></label>
+            <input type="text" id="firstName" name="firstName" required size="40" value="<%= customer.firstName %>">
+        </div>
+        
+        <div class="form-group">
+            <label for="lastName"><strong>Lastname:</strong></label>
+            <input type="text" id="lastName" name="lastName" required size="40" value="<%= customer.lastName %>">
+        </div>
+
+        <div class="form-group">
+            <label for="email"><strong>Email:</strong></label>
+            <input type="email" id="email" name="email" required value="<%= customer.email || '' %>">
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber"><strong>Phone Number:</strong></label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required size="40" maxlength="10" value="<%= customer.phoneNumber || '' %>">
+        </div>
+
+        <button type="submit" class="CreateNewCat">Save</button>
+    </form>
+        <a href="/customer" button class="CreateNewCat">Back to List</a>
+    </center>
+</body>
+</html>
