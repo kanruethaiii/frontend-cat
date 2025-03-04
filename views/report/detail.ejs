@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat</title>
+  <link rel="stylesheet" href="/css/view.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<center>
+<body>
+  <div class="container">
+    <h1>Report Detail</h1>
+    <h2><%= new Date(date).toLocaleDateString('en-GB') %></h2>
+    <table class="order-table">
+        <thead>
+
+            <tr>
+              <th>No</th>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Cat</th>
+              <th>Quantity</th>
+              <th>Unit price</th>
+              <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% 
+                let no = 1 
+                let sum_total = 0
+            %>
+            <% results.forEach(item => { %>
+                <tr>
+                    <td align="center"><%= no %></td>
+                    <td align="center"><%= item.order_id %></td>
+                    <td align="left"><%= item.customer_name %></td>
+                    <td align="left"><%= item.cat_name %></td>
+                    <td align="center"><%= item.quantity %></td>
+                    <td align="right"><%= item.unitPrice %></td>
+                    <td align="right"><%= item.total_amount %></td>
+                </tr>
+                <% 
+                    no++ 
+                    sum_total += item.total_amount
+                %>
+            <% }) %>
+
+            <tr>
+                <td colspan="7" align="right" style="font-weight: bold;">
+                    Total: <%= sum_total %>
+                </td>
+            </tr>
+        </tbody>
+     
+    </table>
+  </div>
+  
+  <br><br>
+  <!-- Corrected Back to List link -->
+  <a href="/report" class="button">Back to Report</a>
+
+</body>
+</center>
+</html>

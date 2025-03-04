@@ -21,6 +21,16 @@ const OrderService = {
   delete: async (id) => {
     return await axios.delete(`${base_url}/orders/${id}`);
   },
+
+  getReport: async () => {
+    return await axios.get(`${base_url}/reports`);
+  },
+
+  getReportByDate: async (date) => {
+    return await axios.get(`${base_url}/reports/detail`, {
+      params: { date }
+    });
+  },
 };
 
 module.exports = OrderService;
