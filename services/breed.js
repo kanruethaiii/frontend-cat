@@ -1,5 +1,5 @@
 const axios = require("axios");
-const base_url = "https://env-7146021.proen.app.ruk-com.cloud";
+const base_url = "https://node76920-env-7146021.proen.app.ruk-com.cloud";
 
 const CatService = {
   getAll: async () => {
