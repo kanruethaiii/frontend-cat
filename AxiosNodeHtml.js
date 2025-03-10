@@ -1,6 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const app = express();
+require('dotenv').config()
 var bodyParser = require("body-parser");
 
 const base_url = "https://env-7146021.proen.app.ruk-com.cloud/";
@@ -318,6 +319,8 @@ app.get("/report/detail", async (req, res) => {
     }
 });
 
-app.listen(5500, () => {
+const port = process.env.PORT || 5500;
+
+app.listen(port, () => {
     console.log(`App running at http://localhost:5500`);
 });
