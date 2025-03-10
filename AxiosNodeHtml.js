@@ -1,7 +1,7 @@
+require('dotenv').config();
 const express = require("express");
 const axios = require("axios");
 const app = express();
-require('dotenv').config()
 var bodyParser = require("body-parser");
 
 const base_url = "https://env-7146021.proen.app.ruk-com.cloud/";
