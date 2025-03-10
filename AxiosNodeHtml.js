@@ -4,7 +4,7 @@ const axios = require("axios");
 const app = express();
 var bodyParser = require("body-parser");
 
-const base_url = "https://env-7146021.proen.app.ruk-com.cloud/";
+const base_url = "https://node76920-env-7146021.proen.app.ruk-com.cloud";
 const CatService = require("./services/cat");
 const CustomerService = require("./services/customer");
 const OrderService = require("./services/order");
