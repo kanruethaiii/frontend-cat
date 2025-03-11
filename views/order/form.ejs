@@ -11,7 +11,7 @@
 <body>
     <center>
     <h1><%= order.id ? "Edit Order" : "Add Order" %></h1>
-    <form action="<%= order.id ? `/order/${order.id}` : '/order/create' %>" method="<%= order.id ? `PUT` : 'POST' %>">
+    <form action="<%= order.id ? `/order/${order.id}` : '/order/create' %>" method="POST">
 
         <div class="form-group">
             <label for="cat"><strong>Cat Name:</strong></label>
@@ -37,16 +37,16 @@
 
         <div class="form-group">
             <label for="quantity"><strong>Quantity:</strong></label>
-            <input type="number" id="quantity" name="quantity" min="0" value="<%= order.quantity || '' %>" onchange="calculateTotalPrice()">
+            <input type="number" id="quantity" name="quantity" min="0" value="<%= order.quantity || '' %>" onkeypress="calculateTotalPrice()">
         </div>
 
         <div class="form-group">
             <label for="unitPrice"><strong>Unit Price:</strong></label>
-            <input type="number" id="unitPrice" name="unitPrice" value="<%= cats.find(cat => String(cat.id) === String(order.cat_id))?.price || '' %>" disabled>        </div>
+            <input type="number" id="unitPrice" name="unitPrice" value="<%= cats.find(cat => String(cat.id) === String(order.cat_id))?.price || '' %>" readonly>        </div>
 
         <div class="form-group">
             <label for="totalPrice"><strong>Total Price:</strong></label>
-            <input type="number" id="totalPrice" name="totalPrice" min="0" value="<%= order.cat_id ? order.quantity * (cats.find(cat => cat.id === order.cat_id)?.price || 0) : '' %>" disabled>
+            <input type="number" id="totalPrice" name="totalPrice" min="0" value="<%= order.cat_id ? order.quantity * (cats.find(cat => cat.id === order.cat_id)?.price || 0) : '' %>" readonly >
         </div>
 
         <button type="submit" class="button">Save</button>

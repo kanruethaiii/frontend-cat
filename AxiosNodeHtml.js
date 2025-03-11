@@ -194,7 +194,7 @@ app.post("/order/create", async (req, res) => {
         await OrderService.create(orderData);
         res.redirect("/order");
     } catch (err) {
-        console.error(err);
+        console.error(err, req.body);
         res.status(500).send("Error creating order");
     }
 });
