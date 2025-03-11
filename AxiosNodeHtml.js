@@ -10,6 +10,7 @@ const CustomerService = require("./services/customer");
 const OrderService = require("./services/order");
 const BreedService = require("./services/breed");
 
+
 app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -296,15 +297,20 @@ app.get("/breed/:id/delete", async (req, res) => {
 });
 
 // Report routes
-app.get("/report", async (req, res) => {
+app.get("/reports", async (req, res) => {
     try {
+        console.log("Fetching reports...");
         const response = await OrderService.getReport();
+        console.log("Response:", response.data);
         res.render("report", { reports: response.data });
     } catch (err) {
-        console.error(err);
-        res.status(500).send("Error");
+        console.error("Error fetching reports:", err.response ? err.response.data : err.message);
+        res.status(500).send("Error fetching reports");
     }
 });
+
+
+
 app.get("/report/detail", async (req, res) => {
     try {
         const { date } = req.query;
