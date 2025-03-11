@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Form</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/edit.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1><%= breed.id ? "Edit Breed" : "Add Breed" %></h1>
     <center>
+        <h1><%= breed.id ? "Edit Breed" : "Add Breed" %></h1>
     <form action="<%= breed.id ? `/breed/${breed.id}/edit` : '/breed/create' %>" method="POST">
 
         <div class="form-group">
@@ -25,9 +26,11 @@
             </select>
         </div>
 
-        <button type="submit" class="CreateNewCat">Save</button>
+        <button type="submit" class="button">Save</button>
+        <br>
+        <br>
+        <a href="/breed" button class="button">Back to List</a>
     </form>
-        <a href="/breed" button class="CreateNewCat">Back to List</a>
     </center>
 </body>
 </html>

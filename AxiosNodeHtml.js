@@ -293,6 +293,31 @@ app.get("/breed/:id/delete", async (req, res) => {
     }
 });
 
+// Report routes
+app.get("/report", async (req, res) => {
+    try {
+        const response = await OrderService.getReport();
+        res.render("report", { reports: response.data });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error");
+    }
+});
+app.get("/report/detail", async (req, res) => {
+    try {
+        const { date } = req.query;
+        const response = await OrderService.getReportByDate(date);
+        console.log(response.data);
+        res.render("report/detail", { 
+            date: date,
+            results: response.data 
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error");
+    }
+});
+
 app.listen(5500, () => {
     console.log(`App running at http://localhost:5500`);
 });

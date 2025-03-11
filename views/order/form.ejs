@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Form</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/edit.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1><%= order.id ? "Edit Order" : "Add Order" %></h1>
     <center>
+    <h1><%= order.id ? "Edit Order" : "Add Order" %></h1>
     <form action="<%= order.id ? `/order/${order.id}/edit` : '/order/create' %>" method="POST">
 
         <div class="form-group">
@@ -44,9 +45,11 @@
             <input type="number" id="unitPrice" name="unitPrice" min="0" value="<%= order.unitPrice || '' %>">
         </div>
 
-        <button type="submit" class="CreateNewCat">Save</button>
+        <button type="submit" class="button">Save</button>
+        <br>
+        <br>
+        <a href="/order" button class="button">Back to List</a>
     </form>
-        <a href="/order" button class="CreateNewCat">Back to List</a>
     </center>
 </body>
 </html>

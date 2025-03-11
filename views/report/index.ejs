@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Shop</title>
     <link rel="stylesheet"  href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<center>
     <nav class="navbar">
-        <ul>
+           <ul>
             <li><a href="/cat"><b>Cat</b></a></li>
             <li><a href="/customer"><b>Customer</b></a></li>
             <li><a href="/order"><b>Order</b></a></li>
@@ -17,34 +19,33 @@
         </ul>
     </nav>
     <main>
-        <h1>Breed</h1>
-        <center>
+        <h1>Report</h1>
+        
         <table class="list" style="width: 50%;">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
-                    <th>Active</th>
+                    <th>Order Date</th>
+                    <th>Total</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <% let no = 1 %>
-                <% breeds.forEach(breed => { %>
+                <% reports.forEach(item => { %>
                     <tr>
                         <td><%= no %></td>
-                        <td><%= breed.name %></td>
-                        <td><%= breed.is_active ? "Active" : "Inactive" %></td>
+                        <td><%= new Date(item.order_date).toLocaleDateString('en-GB') %></td>
+                        <td><%= item.total %></td>
                         <td>
-                            <a href="/breed/<%= breed.id %>" class="button1">View</a>
-                            <a href="/breed/<%= breed.id %>/edit" class="button1">Edit</a>
+                            <a href="/report/detail?date=<%= item.order_date %>" class="button1">View</a>
                         </td>
                     </tr>
                     <% no++ %>
                 <% }) %>
             </tbody>
         </table>
-        <a href="/breed/create" class="CreateNewCat" ">Create New</a>
+        <a href="/report/create" class="CreateNewCat" style="visibility: hidden;">Create New</a>
     </center>
     </main>
 </body>

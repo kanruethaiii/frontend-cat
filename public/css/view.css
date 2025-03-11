@@ -1,0 +1,63 @@
+body {
+    background-image: url('cat.png'); /* ใช้ URL ของรูปภาพ */
+    background-size: cover; /* ทำให้รูปภาพขยายเพื่อครอบคลุมพื้นที่ทั้งหมด */
+    background-position: center; /* ทำให้รูปภาพอยู่ตรงกลาง */
+    background-repeat: no-repeat; /* ป้องกันไม่ให้รูปภาพซ้ำ */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .container {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  }
+  .order-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+    text-align: left;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  .order-table th, .order-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+  }
+  .order-table th {
+    background-color: #fdd1dc;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .order-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  .order-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  .order-table td {
+    font-weight: 500;
+    background-color: white;
+  }
+  .button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #fdd1dc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+     text-decoration: none;
+     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  }
+  .button:hover {
+    background-color: #ffb3f9;
+  }
