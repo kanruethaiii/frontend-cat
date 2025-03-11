@@ -1,5 +1,5 @@
 const axios = require("axios");
-const base_url = "https://env-7146021.proen.app.ruk-com.cloud";
+const base_url = "https://catshopfinal.proen.app.ruk-com.cloud";
 const CustomerService = {
   getAll: async () => {
     return await axios.get(`${base_url}/customers`);
