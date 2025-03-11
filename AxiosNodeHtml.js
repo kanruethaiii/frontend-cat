@@ -171,6 +171,7 @@ app.get("/order", async (req, res) => {
 app.get("/order/create", async (req, res) => {
     const cats = await CatService.getAll();
     const customers = await CustomerService.getAll();
+    console.log(cats)
     res.render("order/form", { 
         order: {},
         cats: cats.data,
