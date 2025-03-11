@@ -15,9 +15,9 @@
 
         <div class="form-group">
             <label for="cat"><strong>Cat Name:</strong></label>
-            <select id="cat" name="cat">
-                <% cats.forEach(cat => { %>
-                    <option value="<%= cat.id %>" <%//= order.cat_id === cat.id ? "selected" : "" %> >
+            <select id="cat" name="cat" onchange="updatePrice()">
+                <% cats.forEach((cat, index) => { %>
+                    <option value="<%= cat.id %>" <%= String(order.cat_id) === String(cat.id) ? "selected" : "" %> data-price="<%= cat.price %>">
                         <%= cat.name %>
                     </option>
                 <% }) %>
@@ -28,7 +28,7 @@
             <label for="customer"><strong>Customer Name:</strong></label>
             <select id="customer" name="customer">
                 <% customers.forEach(customer => { %>       
-                    <option value="<%= customer.id %>" <%//= order.customer_id === customer.id ? "selected" : "" %> >
+                    <option value="<%= customer.id %>" <%= order.customer_id === customer.id ? "selected" : "" %> >
                         <%= customer.username %>
                     </option>
                 <% }) %>
@@ -37,12 +37,16 @@
 
         <div class="form-group">
             <label for="quantity"><strong>Quantity:</strong></label>
-            <input type="number" id="quantity" name="quantity" min="0" value="<%= order.quantity || '' %>">
+            <input type="number" id="quantity" name="quantity" min="0" value="<%= order.quantity || '' %>" onchange="calculateTotalPrice()">
         </div>
 
         <div class="form-group">
             <label for="unitPrice"><strong>Unit Price:</strong></label>
-            <input type="number" id="unitPrice" name="unitPrice" min="0" value="<%= order.unitPrice || '' %>">
+            <input type="number" id="unitPrice" name="unitPrice" value="<%= cats.find(cat => String(cat.id) === String(order.cat_id))?.price || '' %>" disabled>        </div>
+
+        <div class="form-group">
+            <label for="totalPrice"><strong>Total Price:</strong></label>
+            <input type="number" id="totalPrice" name="totalPrice" min="0" value="<%= order.cat_id ? order.quantity * (cats.find(cat => cat.id === order.cat_id)?.price || 0) : '' %>" disabled>
         </div>
 
         <button type="submit" class="button">Save</button>
@@ -51,5 +55,32 @@
         <a href="/order" button class="button">Back to List</a>
     </form>
     </center>
+
+    <script>
+        function updatePrice() {
+            const selectCat = document.getElementById('cat');
+            const selectedOption = selectCat.options[selectCat.selectedIndex];
+            const price = selectedOption.getAttribute('data-price');
+            document.getElementById('unitPrice').value = price;
+            calculateTotalPrice();  // Recalculate total price when cat is changed
+        }
+
+        function calculateTotalPrice() {
+            const unitPrice = parseFloat(document.getElementById('unitPrice').value) || 0;
+            const quantity = parseInt(document.getElementById('quantity').value) || 0;
+            const totalPrice = unitPrice * quantity;
+            document.getElementById('totalPrice').value = totalPrice.toFixed(2); // Set the total price
+
+            // Set the hidden inputs with the calculated values
+            document.getElementById('hiddenUnitPrice').value = unitPrice;
+            document.getElementById('hiddenTotalPrice').value = totalPrice.toFixed(2);
+        }
+
+        // Call updatePrice() on page load to set the initial unit price and total price
+        window.onload = function() {
+            updatePrice();
+            calculateTotalPrice();
+        };
+    </script>
 </body>
 </html>

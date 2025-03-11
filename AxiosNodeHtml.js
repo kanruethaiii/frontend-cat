@@ -1,13 +1,15 @@
+require('dotenv').config();
 const express = require("express");
 const axios = require("axios");
 const app = express();
 var bodyParser = require("body-parser");
 
-const base_url = "http://localhost:5000";
+const base_url = "https://env-7146021.proen.app.ruk-com.cloud";
 const CatService = require("./services/cat");
 const CustomerService = require("./services/customer");
 const OrderService = require("./services/order");
 const BreedService = require("./services/breed");
+
 
 app.set("view engine", "ejs");
 app.use(bodyParser.json());
@@ -170,6 +172,7 @@ app.get("/order", async (req, res) => {
 app.get("/order/create", async (req, res) => {
     const cats = await CatService.getAll();
     const customers = await CustomerService.getAll();
+    console.log(cats)
     res.render("order/form", { 
         order: {},
         cats: cats.data,
