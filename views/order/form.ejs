@@ -11,7 +11,7 @@
 <body>
     <center>
     <h1><%= order.id ? "Edit Order" : "Add Order" %></h1>
-    <form action="<%= order.id ? `/order/${order.id}` : '/order/create' %>" method="POST">
+    <form action="<%= order.id ? `/order/${order.id}/edit` : '/order/create' %>" method="POST">
 
         <div class="form-group">
             <label for="cat"><strong>Cat Name:</strong></label>
